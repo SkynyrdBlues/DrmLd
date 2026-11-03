@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/models/pipeline_sample.glb" id="1_sample"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="2_main"]
+
+[sub_resource type="Environment" id="Environment_main"]
+background_mode = 1
+background_color = Color(0.11, 0.14, 0.19, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.7, 0.75, 0.9, 1)
+ambient_light_energy = 0.65
+
+[sub_resource type="PlaneMesh" id="Plane_floor"]
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="Material_floor"]
+albedo_color = Color(0.28, 0.35, 0.34, 1)
+roughness = 1.0
+
+[node name="Dreamland" type="Node3D"]
+script = ExtResource("2_main")
+
+[node name="PipelineSample" parent="." instance=ExtResource("1_sample")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_main")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("Plane_floor")
+material_override = SubResource("Material_floor")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-50, -30, 0)
+light_energy = 1.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+position = Vector3(4, 3, 6)
+rotation_degrees = Vector3(-23, 34, 0)
+current = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="UI"]
+offset_left = 28.0
+offset_top = 24.0
+text = "DREAMLAND
+Development workspace"

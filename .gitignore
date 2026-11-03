@@ -1,0 +1,9 @@
+.DS_Store
+.godot/
+exports/*
+!exports/.gitkeep
+incoming/*
+!incoming/.gitkeep
+.env
+*.blend1
+*.blend2
